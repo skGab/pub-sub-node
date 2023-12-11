@@ -1,3 +1,5 @@
 export interface QueueContract {
-  publish(canal: string, data: any): any;
+  publish(channel: string, data: any): any;
+  subscribe(channel: string, callback: CallableFunction): any;
+  isEmpty(): boolean;
 }

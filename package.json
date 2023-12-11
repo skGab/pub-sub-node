@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch src/application/server.ts",
+    "dev": "tsx watch src/server.ts",
     "build": "tsup src",
-    "start": "node dist/application/server.js"
+    "start": "node dist/server.js"
   },
   "author": "Gabriel Assunção",
   "license": "ISC",

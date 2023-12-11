@@ -1,21 +1,40 @@
-import { FastifyInstance } from 'fastify';
 import { QueueContract } from '../domain/queue-contract';
-import { Queue } from '../infrastructure/queue';
+import http from 'http';
+import url from 'url';
 
 export class Publisher {
-  fastify: FastifyInstance;
+  constructor(
+    private readonly server: http.Server,
+    private queue: QueueContract
+  ) {}
 
-  constructor(fastify: FastifyInstance) {
-    this.fastify = fastify;
-  }
+  public run() {
+    this.server.on('request', (request, response) => {
+      // GET THE REQUEST URL AND PARSE TO OBJECT TO ACESS PROPS
+      const parsedUrl = url.parse(request.url || '/', true);
+      const pathname = parsedUrl.pathname;
 
-  public publish() {
-    // RECEBE E REGISTRA REQUISIÇÕES NO CANAL
-    this.fastify.get('/', (request, reply) => {
-      const queue: QueueContract = new Queue();
+      // CHEKING THE PATH NAME AND HTTP METHOD
+      if (pathname === '/channel1' && request.method === 'POST') {
+        let body = '';
 
-      queue.publish('channel-1', request.body);
-      reply.send({ message: 'Data stored on channel 1' });
+        // LISTEAN FOR EVENT ON REQUEST OBJECT
+        request.on('data', (data: { message: string }) => {
+          body += data;
+        });
+
+        // PUBLISH THE DATA ON THE CHANNEL
+        request.on('end', () => {
+          this.queue.publish('channel1', body);
+
+          // SEND RESPONSE TO THE CLIENT
+          response.end(
+            JSON.stringify({ message: 'Message published to channel1' })
+          );
+        });
+      } else {
+        response.end(JSON.stringify({ error: 'Not Found' }));
+      }
     });
   }
 }
