@@ -13,10 +13,11 @@ export class Subscriber {
       (message: string, channel: string, items: any) => {
         // RETURN MESSAGE FROM CHANNEL
         console.log(`Message receive from ${channel}`);
-        console.log(`Message: ${message}`);
+        console.log(`Message: ${JSON.stringify(message)}`);
 
         // SAVE MESSAGE ON DB
         this.queueRepository.save(items);
+        console.log('Data stored on DB');
       }
     );
   }

@@ -11,8 +11,6 @@ export class QueueRepository implements QueueRepositoryContract {
         console.log(err);
         return false;
       }
-
-      console.log('Updated file successfully');
     });
     return Promise.resolve(true);
   }
