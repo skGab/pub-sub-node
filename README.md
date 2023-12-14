@@ -1,31 +1,29 @@
-# Project Setup and Usage Instructions
+# Projeto Pub/Sub
 
-## Initial Setup
+## Instalação de dependencias
 
-After cloning the project repository, you need to install the necessary dependencies. Run the following command in your project's root directory:
+Após baixar o projeto, você precisa instalar as dependências necessárias:
 
-npm install
+`npm install`
 
-## Running Locally
+## Rodando Local
 
-To start the application in a development environment, execute:
+Para iniciar a aplicação em um ambiente de desenvolvimento:
 
-npm run dev
+`npm run dev`
 
-This will launch the server on `localhost` at port `3000`.
+Isso inicia o servidor em `localhost` na porta `3000`.
 
-## Testing the Application
+## Testando a aplicação
 
-To test a specific route, send a POST request to `http://localhost:3000/channel1` with a JSON payload. You can do this using tools like Postman or cURL. After sending the request, check the console for output to verify the route's functionality.
+Para testar a rota, envie uma solicitação POST para `http://localhost:3000/channel1` com um payload JSON. Verificar o console após request.
 
-## Running Tests
+## Rodando testes
 
-Before running tests, it's necessary to build the project. Use the following command for building:
+Antes de executar os testes, é necessário buildar o projeto:
 
-npm run build
+`npm run build`
 
-After the build is complete, you can execute tests for specific files. From the root of the application, run:
+Em seguida é só rodar o comando no arquivo selecionado, partindo do root da aplicação:
 
-node tests/<file_name>.test.mjs
-
-Replace `<file_name>` with the actual name of the test file you wish to run.
+`node tests/<file_name>.test.mjs`
