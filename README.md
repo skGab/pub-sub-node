@@ -27,3 +27,4 @@ Antes de executar os testes, é necessário buildar o projeto:
 Em seguida é só rodar o comando no arquivo selecionado, partindo do root da aplicação:
 
 `node tests/<file_name>.test.mjs`
+ 
