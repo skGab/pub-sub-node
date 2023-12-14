@@ -1,10 +1,16 @@
 {
   "channel1": {
     "0": {
-      "message": "Post from Insomnia 2"
+      "message": "Test Message"
     },
     "1": {
-      "message": "Post from Insomnia 5"
+      "message": "Test Message"
+    },
+    "2": {
+      "message": "Test Message"
+    },
+    "3": {
+      "message": "Test Message"
     }
   }
 }
